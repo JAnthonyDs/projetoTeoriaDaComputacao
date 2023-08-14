@@ -71,11 +71,28 @@ function movePrimeiro(x) {
   }, 100);
 }
 
+function moveSegundo(y) {
+  py = y;
+  m = setInterval(() => {
+    ctx.clearRect(430, py - 15, 20, 20);
+    ctx.fillStyle = "white";
+    ctx.fillRect(430, py, 20, 20);
+
+    if (py > 600) {
+      clearInterval(m);
+    }
+
+    py += 15;
+  }, 100);
+}
+
 function iniciar() {
   if (pSemaforo == "green") {
     //primeiro carrinho anda
     console.log("SIM");
     movePrimeiro(350);
+  } else {
+    moveSegundo(337);
   }
 }
 
