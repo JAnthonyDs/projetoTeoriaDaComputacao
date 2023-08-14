@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruzamento</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="content">
+        <canvas id="canvas" width="1000px" height="1000px">
+            Seu navegador não tem suporte ao canvas
+        </canvas>
+
+        <button id="place">Place</button>
+        <span style="margin: 10px;">Qual semáforo ficará <strong style="color: green">verde</strong> primeiro?</span>
+        <select id="semaforoInicial">
+            <option value="green" selected>1 semaforo</option>
+            <option value="red">2 semaforo</option>
+        </select>
+        <button id="comecar" style="margin-left: 10px;">Iniciar</button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
