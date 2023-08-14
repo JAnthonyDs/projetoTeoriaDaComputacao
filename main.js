@@ -41,7 +41,7 @@ function segundoSemaforo(color) {
   ctx.fillStyle = color;
 
   //semaforo pista horizontal
-  ctx.fillRect(430, 375, 20, 20);
+  ctx.fillRect(420, 375, 10, 10);
 }
 
 function colocarPrimeiroCarrinho(x, y) {
