@@ -11,6 +11,9 @@ var comecar = document.getElementById("comecar");
 let pSemaforo = "";
 let sSemaforo = "";
 
+let pSemaforoAtv = false;
+let sSemaforoAtv = false;
+
 function desenhaPistas() {
   //ctx.clearRect(0,0,canvas.width,canvas.height)
 
@@ -63,11 +66,18 @@ function movePrimeiro(x) {
     ctx.fillStyle = "white";
     ctx.fillRect(px, 430, 20, 20);
 
-    if (px == 600) {
+    if (px > 500) {
+      pSemaforoAtv = true;
+
+      if (!sSemaforoAtv) {
+        segundoSemaforo("green");
+        primeiroSemaforo("red");
+        moveSegundo(337);
+      }
       clearInterval(p);
     }
 
-    px += 5;
+    px += 15;
   }, 100);
 }
 
@@ -78,7 +88,13 @@ function moveSegundo(y) {
     ctx.fillStyle = "white";
     ctx.fillRect(430, py, 20, 20);
 
-    if (py > 600) {
+    if (py > 530) {
+      sSemaforoAtv = true;
+      if (!pSemaforoAtv) {
+        primeiroSemaforo("green");
+        segundoSemaforo("red");
+        movePrimeiro(340);
+      }
       clearInterval(m);
     }
 
