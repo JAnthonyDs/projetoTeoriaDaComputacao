@@ -62,16 +62,19 @@ function colocarSegundoCarrinho(x, y) {
 
 function movePrimeiro(x) {
   px = x;
-
-  image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (2).svg')
   p = setInterval(() => {
     ctx.clearRect(px - 10, 430, 20, 20);
 
     ctx.fillStyle = "white";
     ctx.fillRect(px, 430, 20, 20);
 
-    if(px > 400){
+    if(px > 360 && px < 420){
+
       primeiroSemaforo('yellow')
+      image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (2).svg')
+    }
+
+    if(px > 420){
       image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (3).svg')
     }
 
