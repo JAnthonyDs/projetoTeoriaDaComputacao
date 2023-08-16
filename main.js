@@ -7,6 +7,8 @@ var place = document.getElementById("place");
 
 var comecar = document.getElementById("comecar");
 
+var image = document.querySelector("#image")
+
 //Guardar o estado dos semaforos
 let pSemaforo = "";
 let sSemaforo = "";
@@ -60,11 +62,19 @@ function colocarSegundoCarrinho(x, y) {
 
 function movePrimeiro(x) {
   px = x;
+  // segundoSemaforo('green')
+  primeiroSemaforo('yellow')
   p = setInterval(() => {
-    ctx.clearRect(px - 15, 430, 20, 20);
+    ctx.clearRect(px - 10, 430, 20, 20);
 
     ctx.fillStyle = "white";
     ctx.fillRect(px, 430, 20, 20);
+
+    if(px > 450){
+
+      image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (3).svg')
+      segundoSemaforo('green')
+    }
 
     if (px > 500) {
       pSemaforoAtv = true;
@@ -77,42 +87,52 @@ function movePrimeiro(x) {
       clearInterval(p);
     }
 
-    px += 15;
+    segundoSemaforo('green')
+
+    px += 5;
   }, 100);
 }
 
 function moveSegundo(y) {
   py = y;
+  image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (4).svg')
+  segundoSemaforo('yellow')
   m = setInterval(() => {
-    ctx.clearRect(430, py - 15, 20, 20);
+    ctx.clearRect(430, py - 5, 20, 20);
     ctx.fillStyle = "white";
     ctx.fillRect(430, py, 20, 20);
 
+    segundoSemaforo('yellow')
+
+    if(py > 430){
+
+    image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (5).svg')
+    }
+  
     if (py > 530) {
-      sSemaforoAtv = true;
-      if (!pSemaforoAtv) {
-        primeiroSemaforo("green");
-        segundoSemaforo("red");
-        movePrimeiro(340);
-      }
+      // sSemaforoAtv = true;
+
+      image.setAttribute('src', './SVG-AUTOMATO/Site.drawio.svg')
+      segundoSemaforo("red");
+      primeiroSemaforo('green')
       clearInterval(m);
     }
 
-    py += 15;
+
+
+    py += 5;
   }, 100);
 }
 
 function iniciar() {
   if (pSemaforo == "green") {
     //primeiro carrinho anda
-    console.log("SIM");
+    image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (2).svg')
     movePrimeiro(350);
   } else {
     moveSegundo(337);
   }
 }
-
-function redraw() {}
 
 place.addEventListener("click", () => {
   colocarPrimeiroCarrinho(340, 430);
