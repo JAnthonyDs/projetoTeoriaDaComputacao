@@ -62,18 +62,17 @@ function colocarSegundoCarrinho(x, y) {
 
 function movePrimeiro(x) {
   px = x;
-  // segundoSemaforo('green')
-  primeiroSemaforo('yellow')
+
+  image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (2).svg')
   p = setInterval(() => {
     ctx.clearRect(px - 10, 430, 20, 20);
 
     ctx.fillStyle = "white";
     ctx.fillRect(px, 430, 20, 20);
 
-    if(px > 450){
-
+    if(px > 400){
+      primeiroSemaforo('yellow')
       image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (3).svg')
-      segundoSemaforo('green')
     }
 
     if (px > 500) {
@@ -87,7 +86,6 @@ function movePrimeiro(x) {
       clearInterval(p);
     }
 
-    segundoSemaforo('green')
 
     px += 5;
   }, 100);
@@ -96,17 +94,17 @@ function movePrimeiro(x) {
 function moveSegundo(y) {
   py = y;
   image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (4).svg')
-  segundoSemaforo('yellow')
+  segundoSemaforo('green')
   m = setInterval(() => {
     ctx.clearRect(430, py - 5, 20, 20);
     ctx.fillStyle = "white";
     ctx.fillRect(430, py, 20, 20);
 
-    segundoSemaforo('yellow')
+    // segundoSemaforo('yellow')
 
     if(py > 430){
-
-    image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (5).svg')
+      segundoSemaforo('yellow')
+      image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (5).svg')
     }
   
     if (py > 530) {
@@ -127,7 +125,6 @@ function moveSegundo(y) {
 function iniciar() {
   if (pSemaforo == "green") {
     //primeiro carrinho anda
-    image.setAttribute('src', './SVG-AUTOMATO/Site.drawio (2).svg')
     movePrimeiro(350);
   } else {
     moveSegundo(337);
